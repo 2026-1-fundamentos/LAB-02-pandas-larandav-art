@@ -5,6 +5,9 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+from pathlib import Path
+import pandas as pd
+
 
 def pregunta_06():
     """
@@ -15,3 +18,6 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
+    path = Path(__file__).resolve().parents[1] / "files" / "input" / "tbl1.tsv"
+    df = pd.read_csv(path, sep="\t")
+    return sorted(df["c4"].str.upper().unique().tolist())
